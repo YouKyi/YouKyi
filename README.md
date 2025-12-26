@@ -31,7 +31,7 @@
   <br/>
   
   <!-- Network & Proxy -->
-  <img src="https://img.shields.io/badge/Traefik-24292E?style=for-the-badge&logo=traefik&logoColor=white" />
+  <img src="https://img.shields.io/badge/Traefik-%252300314b.svg?style=for-the-badge&logo=traefikproxy&logoColor=white" />
   <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" />
   <img src="https://img.shields.io/badge/WireGuard-88171A?style=for-the-badge&logo=wireguard&logoColor=white" />
   
