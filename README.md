@@ -71,7 +71,7 @@
       </tr>
       <tr>
         <td align="center"><b>Identity (IAM)</b></td>
-        <td align="center">Authentik (OIDC/OAuth2), LDAP</td>
+        <td align="center">Authentik (OIDC/OAuth2), LDAPs, SAML</td>
       </tr>
       <tr>
         <td align="center"><b>Security</b></td>
