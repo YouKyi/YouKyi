@@ -4,7 +4,7 @@
 
 <div align="center">
   
-  ### 🔨 SysAdmin | 🐳 Containerization Expert | 🔐 Security & PKI
+  ### 🔨 SysAdmin | 🐳 Containerization Expert | 🔐 Cybersecurity & PKI
   
   <p>
     Passionate about automation, security, and system architecture.<br>
@@ -66,20 +66,24 @@
     </thead>
     <tbody>
       <tr>
-        <td align="center"><b>Messagerie</b></td>
-        <td align="center">Stalwart Mail Server, SPF/DKIM/DMARC/MTA-STS/DANE</td>
+        <td align="center"><b>Mailing</b></td>
+        <td align="center">Stalwart Mail Server, SPF/DKIM/DMARC/MTA-STS/DANE & ProtonMail</td>
       </tr>
       <tr>
-        <td align="center"><b>Identité (IAM)</b></td>
+        <td align="center"><b>Identity (IAM)</b></td>
         <td align="center">Authentik (OIDC/OAuth2), LDAP</td>
       </tr>
       <tr>
-        <td align="center"><b>PKI Interne</b></td>
-        <td align="center">Step-CA, Internal ACME</td>
+        <td align="center"><b>Security</b></td>
+        <td align="center">Bunkerweb, Unifi, Wazuh, Step-CA, Netbird VPN</td>
+      </tr>
+      <tr>
+        <td align="center"><b>System</b></td>
+        <td align="center">Proxmox, TrueNAS, Debian, Ubuntu</td>
       </tr>
       <tr>
         <td align="center"><b>Reverse Proxy</b></td>
-        <td align="center">Traefik + Bunkerweb</td>
+        <td align="center">Traefik & Bunkerweb</td>
       </tr>
       <tr>
         <td align="center"><b>Others</b></td>
