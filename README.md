@@ -1,21 +1,19 @@
 <!-- ╔══════════════════════════════════════════════════════════════╗ -->
-<!-- ║  YouKyi · GitHub profile  ·  terminal / self-hosting theme    ║ -->
+<!-- ║  YouKyi · GitHub profile  ·  electric-blue neon / terminal     ║ -->
+<!-- ║  Animated assets live in /assets (custom SVG, CSS + SMIL)      ║ -->
 <!-- ╚══════════════════════════════════════════════════════════════╝ -->
 
 <div align="center">
 
-<img
-  src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=22&duration=3000&pause=1000&color=22D3EE&center=true&vCenter=true&width=680&height=60&lines=%24+whoami;SysAdmin+%2F%2F+Containerization+Expert;Cybersecurity+%26+PKI+%2F%2F+Redteam;Self-Hosting+%26+Automation+enthusiast"
-  alt="whoami"
-/>
+<img src="assets/header.svg" alt="YouKyi — SysAdmin // Containerization // PKI // Redteam" width="100%"/>
 
 <a href="https://github.com/YouKyi">
-  <img src="https://komarev.com/ghpvc/?username=YouKyi&style=flat-square&color=22D3EE&label=PROFILE+VIEWS" alt="Profile views" />
+  <img src="https://komarev.com/ghpvc/?username=YouKyi&style=flat-square&color=38BDF8&label=PROFILE+VIEWS" alt="Profile views" />
 </a>
 
 </div>
 
-<br/>
+<img src="assets/divider.svg" width="100%" alt=""/>
 
 <!-- ───────────────────────────  ABOUT  ─────────────────────────── -->
 
@@ -36,7 +34,7 @@ youkyi@infra:~$ neofetch
   with a strong focus on <b>Self-Hosting</b>, <b>automation</b> and <b>security</b>.
 </p>
 
-<br/>
+<img src="assets/divider.svg" width="100%" alt=""/>
 
 <!-- ───────────────────────  CURRENT FOCUS  ─────────────────────── -->
 
@@ -50,7 +48,7 @@ $ systemctl status focus.target
    └─ lab/k8s ............ Kubernetes migration  [in progress]
 ```
 
-<br/>
+<img src="assets/divider.svg" width="100%" alt=""/>
 
 <!-- ────────────────────────  TECH STACK  ───────────────────────── -->
 
@@ -79,7 +77,7 @@ $ systemctl status focus.target
 
 <sub><b>Security &amp; Identity</b></sub><br/>
 <img src="https://img.shields.io/badge/Authentik-FD4B2D?style=flat-square&logo=authentik&logoColor=white" />
-<img src="https://img.shields.io/badge/PKI%20·%20Step--CA-22D3EE?style=flat-square&logoColor=white" />
+<img src="https://img.shields.io/badge/PKI%20·%20Step--CA-38BDF8?style=flat-square&logoColor=white" />
 <img src="https://img.shields.io/badge/Vault-000000?style=flat-square&logo=vault&logoColor=white" />
 <img src="https://img.shields.io/badge/Wazuh-3268C4?style=flat-square&logo=wazuh&logoColor=white" />
 
@@ -95,7 +93,7 @@ $ systemctl status focus.target
 
 </div>
 
-<br/>
+<img src="assets/divider.svg" width="100%" alt=""/>
 
 <!-- ─────────────────────  LAB & PROJECTS  ──────────────────────── -->
 
@@ -141,7 +139,7 @@ $ systemctl status focus.target
 
 </div>
 
-<br/>
+<img src="assets/divider.svg" width="100%" alt=""/>
 
 <!-- ──────────────────────  GITHUB ACTIVITY  ────────────────────── -->
 
@@ -149,12 +147,12 @@ $ systemctl status focus.target
 
 <h2>📊 GitHub Activity</h2>
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=YouKyi&show_icons=true&count_private=true&hide_border=true&bg_color=0D1117&title_color=22D3EE&icon_color=34D399&text_color=C9D1D9" alt="GitHub stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YouKyi&layout=compact&hide_border=true&bg_color=0D1117&title_color=22D3EE&text_color=C9D1D9" alt="Top languages" />
+<img height="165" src="https://github-readme-stats.vercel.app/api?username=YouKyi&show_icons=true&count_private=true&hide_border=true&bg_color=0A0E14&title_color=38BDF8&icon_color=7DD3FC&text_color=C9D1D9" alt="GitHub stats" />
+<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YouKyi&layout=compact&hide_border=true&bg_color=0A0E14&title_color=38BDF8&text_color=C9D1D9" alt="Top languages" />
 
 <br/>
 
-<img src="https://streak-stats.demolab.com?user=YouKyi&hide_border=true&background=0D1117&stroke=22D3EE&ring=22D3EE&fire=34D399&currStreakLabel=22D3EE&sideLabels=C9D1D9&dates=8B949E&currStreakNum=C9D1D9&sideNums=C9D1D9" alt="GitHub streak" />
+<img src="https://streak-stats.demolab.com?user=YouKyi&hide_border=true&background=0A0E14&stroke=38BDF8&ring=38BDF8&fire=7DD3FC&currStreakLabel=38BDF8&sideLabels=C9D1D9&dates=8B949E&currStreakNum=E0F2FE&sideNums=C9D1D9" alt="GitHub streak" />
 
 <br/><br/>
 
@@ -167,7 +165,7 @@ $ systemctl status focus.target
 
 </div>
 
-<br/>
+<img src="assets/divider.svg" width="100%" alt=""/>
 
 <!-- ────────────────────────  SOCIALS  ──────────────────────────── -->
 
@@ -192,10 +190,4 @@ $ systemctl status focus.target
 
 </div>
 
-<br/>
-
-<div align="center">
-  <sub><code>youkyi@infra:~$ logout</code></sub>
-</div>
-
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0D1117,100:22D3EE&height=120&section=footer" alt="footer" width="100%"/>
+<img src="assets/footer.svg" width="100%" alt="logout"/>
