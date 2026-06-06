@@ -5,7 +5,7 @@
 
 <div align="center">
 
-<img src="assets/header.svg" alt="YouKyi — SysAdmin // Containerization // PKI // Redteam" width="100%"/>
+<img src="assets/header.svg" alt="YouKyi · SysAdmin // Containerization // PKI // Redteam" width="100%"/>
 
 <a href="https://github.com/YouKyi">
   <img src="https://komarev.com/ghpvc/?username=YouKyi&style=flat-square&color=38BDF8&label=PROFILE+VIEWS" alt="Profile views" />
@@ -17,17 +17,9 @@
 
 <!-- ───────────────────────────  ABOUT  ─────────────────────────── -->
 
-```bash
-youkyi@infra:~$ neofetch
-
-    .--.       OS ........: Debian · Proxmox · TrueNAS
-   |o_o |      Role ......: SysAdmin // DevSecOps // PKI
-   |:_/ |      Shell .....: Bash · Go · Python
-  //   \ \     Stack .....: Docker · Kubernetes · Traefik
- (|     | )    Security ..: IAM · PKI · Redteam · Hardening
- /'\_   _/`\   Hosting ...: bare-metal -> cloud, 24/7
- \___)=(___/   Motto .....: fix the system, not the symptom
-```
+<div align="center">
+  <img src="assets/about.svg" alt="neofetch // SysAdmin // DevSecOps // PKI" width="100%"/>
+</div>
 
 <p align="center">
   I design resilient infrastructures, from bare metal to the cloud,
@@ -38,15 +30,9 @@ youkyi@infra:~$ neofetch
 
 <!-- ───────────────────────  CURRENT FOCUS  ─────────────────────── -->
 
-```ini
-$ systemctl status focus.target
-
-● focus.target — currently working on
-   ├─ infra/mail ......... Stalwart + SPF/DKIM/DMARC/MTA-STS/DANE
-   ├─ infra/iam .......... Authentik OIDC/SAML/LDAPs hardening
-   ├─ security/pki ....... Step-CA internal PKI rollout
-   └─ lab/k8s ............ Kubernetes migration  [in progress]
-```
+<div align="center">
+  <img src="assets/focus.svg" alt="systemctl status focus.target" width="100%"/>
+</div>
 
 <img src="assets/divider.svg" width="100%" alt=""/>
 
@@ -54,42 +40,30 @@ $ systemctl status focus.target
 
 <div align="center">
 
-<h2>🛠️ Tech Stack</h2>
+<h2>🛠️ Skills &amp; Tooling</h2>
+<sub><i>The foundations I master, day to day.</i></sub>
 
-<sub><b>Infrastructure &amp; Virtualization</b></sub><br/>
-<img src="https://img.shields.io/badge/Proxmox-E57000?style=flat-square&logo=proxmox&logoColor=white" />
-<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
-<img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white" />
-<img src="https://img.shields.io/badge/Debian-A81D33?style=flat-square&logo=debian&logoColor=white" />
-<img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=white" />
-<img src="https://img.shields.io/badge/TrueNAS-0095D5?style=flat-square&logo=truenas&logoColor=white" />
+<br/><br/>
 
-<br/>
-
-<sub><b>Network &amp; Reverse Proxy</b></sub><br/>
-<img src="https://img.shields.io/badge/Traefik-37ABC8?style=flat-square&logo=traefikproxy&logoColor=white" />
-<img src="https://img.shields.io/badge/Nginx-009639?style=flat-square&logo=nginx&logoColor=white" />
-<img src="https://img.shields.io/badge/BunkerWeb-F5A623?style=flat-square&logoColor=white" />
-<img src="https://img.shields.io/badge/WireGuard-88171A?style=flat-square&logo=wireguard&logoColor=white" />
-<img src="https://img.shields.io/badge/Netbird-FF6B00?style=flat-square&logoColor=white" />
-
-<br/>
-
-<sub><b>Security &amp; Identity</b></sub><br/>
-<img src="https://img.shields.io/badge/Authentik-FD4B2D?style=flat-square&logo=authentik&logoColor=white" />
-<img src="https://img.shields.io/badge/PKI%20·%20Step--CA-38BDF8?style=flat-square&logoColor=white" />
-<img src="https://img.shields.io/badge/Vault-000000?style=flat-square&logo=vault&logoColor=white" />
-<img src="https://img.shields.io/badge/Wazuh-3268C4?style=flat-square&logo=wazuh&logoColor=white" />
-
-<br/>
-
-<sub><b>Mail &amp; Code</b></sub><br/>
-<img src="https://img.shields.io/badge/Stalwart%20Mail-0A0A0A?style=flat-square&logoColor=white" />
-<img src="https://img.shields.io/badge/Proton%20Mail-6D4AFF?style=flat-square&logo=protonmail&logoColor=white" />
+<sub><b>Languages &amp; Data</b></sub><br/>
 <img src="https://img.shields.io/badge/Bash-4EAA25?style=flat-square&logo=gnubash&logoColor=white" />
 <img src="https://img.shields.io/badge/Go-00ADD8?style=flat-square&logo=go&logoColor=white" />
 <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white" />
 <img src="https://img.shields.io/badge/PostgreSQL-4169E1?style=flat-square&logo=postgresql&logoColor=white" />
+
+<br/>
+
+<sub><b>Containers &amp; Orchestration</b></sub><br/>
+<img src="https://img.shields.io/badge/Docker-2496ED?style=flat-square&logo=docker&logoColor=white" />
+<img src="https://img.shields.io/badge/Kubernetes-326CE5?style=flat-square&logo=kubernetes&logoColor=white" />
+
+<br/>
+
+<sub><b>Systems &amp; Virtualization</b></sub><br/>
+<img src="https://img.shields.io/badge/Debian-A81D33?style=flat-square&logo=debian&logoColor=white" />
+<img src="https://img.shields.io/badge/Ubuntu-E95420?style=flat-square&logo=ubuntu&logoColor=white" />
+<img src="https://img.shields.io/badge/Proxmox-E57000?style=flat-square&logo=proxmox&logoColor=white" />
+<img src="https://img.shields.io/badge/TrueNAS-0095D5?style=flat-square&logo=truenas&logoColor=white" />
 
 </div>
 
@@ -99,36 +73,32 @@ $ systemctl status focus.target
 
 <div align="center">
 
-<h2>🏗️ Lab &amp; Current Projects</h2>
-<p>An overview of what is currently running on my infrastructure.</p>
+<h2>🏗️ Self-Hosted Services</h2>
+<p>What's actually running on my infrastructure, grouped by function.</p>
 
 <table>
   <thead>
     <tr>
-      <th align="left">Category</th>
-      <th align="left">Stack / Tools</th>
+      <th align="left">Function</th>
+      <th align="left">Service / stack</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td>📬 <b>Mailing</b></td>
-      <td>Stalwart Mail Server · SPF / DKIM / DMARC / MTA-STS / DANE · ProtonMail</td>
+      <td>Stalwart Mail Server · ProtonMail · SPF / DKIM / DMARC / MTA-STS / DANE</td>
     </tr>
     <tr>
       <td>🪪 <b>Identity (IAM)</b></td>
-      <td>Authentik (OIDC / OAuth2) · LDAPs · SAML</td>
+      <td>Authentik (OIDC / OAuth2 / SAML) · LDAPs</td>
     </tr>
     <tr>
       <td>🛡️ <b>Security</b></td>
-      <td>BunkerWeb · Unifi · Wazuh · Step-CA · Netbird VPN</td>
+      <td>Wazuh (SIEM) · Step-CA (PKI) · BunkerWeb (WAF) · Vault</td>
     </tr>
     <tr>
-      <td>🖥️ <b>System</b></td>
-      <td>Proxmox · TrueNAS · Debian · Ubuntu · Kubernetes</td>
-    </tr>
-    <tr>
-      <td>🔀 <b>Reverse Proxy</b></td>
-      <td>Traefik · BunkerWeb</td>
+      <td>🌐 <b>Network &amp; Proxy</b></td>
+      <td>Traefik · Nginx · WireGuard · Netbird · Unifi</td>
     </tr>
     <tr>
       <td>✨ <b>And more</b></td>
@@ -172,8 +142,6 @@ $ systemctl status focus.target
 <div align="center">
 
 <h2>📇 Contact &amp; Socials</h2>
-
-<p><i>"I don't simply fix problems, I fix the system that caused them."</i></p>
 
 <a href="https://github.com/YouKyi/YouKyi/blob/main/pgp/contact-pub.asc">
   <img src="https://img.shields.io/badge/PGP-0093DD?style=flat-square&logo=gnuprivacyguard&logoColor=white" alt="PGP key" />
