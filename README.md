@@ -120,6 +120,7 @@
 
 <!-- ──────────────────────  GITHUB ACTIVITY  ────────────────────── -->
 
+
 <div align="center">
 
 <h2>📊 GitHub Activity</h2>
