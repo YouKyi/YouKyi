@@ -8,7 +8,7 @@
 <img src="assets/header.svg" alt="YouKyi · SysAdmin // Containerization // PKI // Redteam" width="100%"/>
 
 <a href="https://github.com/YouKyi">
-  <img src="https://komarev.com/ghpvc/?username=YouKyi&style=flat-square&color=38BDF8&label=PROFILE+VIEWS" alt="Profile views" />
+  <img src="https://komarev.com/ghpvc/?username=YouKyi&style=flat-square&color=E879F9&label=PROFILE+VIEWS" alt="Profile views" />
 </a>
 
 </div>
