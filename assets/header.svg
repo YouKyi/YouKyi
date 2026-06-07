@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" width="1000" height="300" fill="none" role="img" aria-label="YouKyi - SysAdmin, Containerization, PKI, Redteam">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7DD3FC"/>
+      <stop offset="0.5" stop-color="#38BDF8"/>
+      <stop offset="1" stop-color="#0EA5E9"/>
+    </linearGradient>
+    <linearGradient id="sweep" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#7DD3FC" stop-opacity="0.30"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="line" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#7DD3FC" stop-opacity="1"/>
+      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+    </linearGradient>
+    <radialGradient id="vig" cx="0.5" cy="0.42" r="0.75">
+      <stop offset="0" stop-color="#0A0E14" stop-opacity="0"/>
+      <stop offset="1" stop-color="#0A0E14" stop-opacity="0.92"/>
+    </radialGradient>
+
+    <filter id="bigblur" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="12"/>
+    </filter>
+    <filter id="glow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
+      <feMerge>
+        <feMergeNode in="b"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse">
+      <path d="M42 0H0V42" fill="none" stroke="#38BDF8" stroke-opacity="0.07" stroke-width="1"/>
+    </pattern>
+    <pattern id="scanp" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="1" fill="#7DD3FC" opacity="0.05"/>
+    </pattern>
+
+    <clipPath id="type">
+      <rect x="262" y="206" width="0" height="26">
+        <animate attributeName="width" values="0;476;476;0" keyTimes="0;0.55;0.92;1" dur="6s" begin="0.4s" repeatCount="indefinite"/>
+      </rect>
+    </clipPath>
+
+    <style>
+      @keyframes pulse { 0%,100% { opacity:.35 } 50% { opacity:1 } }
+      @keyframes sweepmove { 0% { transform:translateX(-100%) } 100% { transform:translateX(100%) } }
+      @keyframes scan { 0% { transform:translateY(0) } 100% { transform:translateY(3px) } }
+      @keyframes float { 0% { transform:translateY(0); opacity:0 } 12% { opacity:.9 } 88% { opacity:.5 } 100% { transform:translateY(-150px); opacity:0 } }
+      @keyframes flick { 0%,100% { opacity:1 } 47% { opacity:1 } 48% { opacity:.4 } 49% { opacity:1 } 92% { opacity:1 } 93% { opacity:.6 } 94% { opacity:1 } }
+      .halo  { animation:pulse 2.8s ease-in-out infinite }
+      .sweep { animation:sweepmove 7s linear infinite }
+      .scan  { animation:scan .5s linear infinite }
+      .flick { animation:flick 4.5s linear infinite }
+      .p     { animation:float 7s ease-in infinite }
+    </style>
+  </defs>
+
+  <!-- background -->
+  <rect width="1000" height="300" fill="#0A0E14"/>
+  <rect width="1000" height="300" fill="url(#grid)"/>
+  <g class="sweep"><rect width="1000" height="300" fill="url(#sweep)"/></g>
+  <g class="scan"><rect x="0" y="-3" width="1000" height="306" fill="url(#scanp)"/></g>
+  <rect width="1000" height="300" fill="url(#vig)"/>
+
+  <!-- HUD corner brackets -->
+  <g stroke="#38BDF8" stroke-width="2" stroke-opacity="0.8" fill="none" filter="url(#glow)">
+    <path d="M24 54 V24 H54"/>
+    <path d="M976 54 V24 H946"/>
+    <path d="M24 246 V276 H54"/>
+    <path d="M976 246 V276 H946"/>
+  </g>
+
+  <!-- floating particles -->
+  <g fill="#7DD3FC" filter="url(#glow)">
+    <circle class="p" cx="120" cy="270" r="2"   style="animation-delay:0s"/>
+    <circle class="p" cx="250" cy="280" r="1.6" style="animation-delay:1.2s"/>
+    <circle class="p" cx="380" cy="275" r="2.4" style="animation-delay:2.4s"/>
+    <circle class="p" cx="520" cy="285" r="1.5" style="animation-delay:0.7s"/>
+    <circle class="p" cx="640" cy="270" r="2.2" style="animation-delay:3.1s"/>
+    <circle class="p" cx="760" cy="282" r="1.8" style="animation-delay:1.8s"/>
+    <circle class="p" cx="880" cy="276" r="2"   style="animation-delay:2.9s"/>
+    <circle class="p" cx="700" cy="288" r="1.4" style="animation-delay:4.2s"/>
+    <circle class="p" cx="320" cy="288" r="1.7" style="animation-delay:3.6s"/>
+    <circle class="p" cx="180" cy="284" r="1.5" style="animation-delay:5s"/>
+  </g>
+
+  <!-- title : pulsing halo + crisp top layer -->
+  <g class="flick">
+    <text class="halo" x="500" y="150" text-anchor="middle" font-family="'Segoe UI', system-ui, Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="8" fill="#38BDF8" filter="url(#bigblur)">YouKyi</text>
+    <text x="500" y="150" text-anchor="middle" font-family="'Segoe UI', system-ui, Helvetica, Arial, sans-serif" font-size="96" font-weight="800" letter-spacing="8" fill="url(#sky)" filter="url(#glow)">YouKyi</text>
+  </g>
+
+  <!-- glowing underline -->
+  <rect x="320" y="176" width="360" height="3" rx="1.5" fill="url(#line)" filter="url(#glow)"/>
+
+  <!-- typed subtitle prompt -->
+  <g font-family="'Courier New', monospace" font-size="22" filter="url(#glow)">
+    <text x="240" y="226" fill="#7DD3FC">&gt;</text>
+    <g clip-path="url(#type)">
+      <text x="262" y="226" fill="#E0F2FE">SysAdmin // Containerization // PKI // Redteam</text>
+    </g>
+    <rect y="207" width="11" height="24" fill="#38BDF8">
+      <animate attributeName="x" values="262;738;738;262" keyTimes="0;0.55;0.92;1" dur="6s" begin="0.4s" repeatCount="indefinite"/>
+      <animate attributeName="opacity" values="1;1;0;1;1" keyTimes="0;0.82;0.88;0.94;1" dur="1s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+</svg>

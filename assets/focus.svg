@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 240" width="820" height="240" fill="none" font-family="'Courier New', ui-monospace, monospace" role="img" aria-label="systemctl status focus.target: Kubernetes migration, internal PKI, mail hardening, access hardening">
+  <defs>
+    <linearGradient id="fbody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0D1320"/>
+      <stop offset="1" stop-color="#0A0E14"/>
+    </linearGradient>
+    <filter id="ftext" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="fborder" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="fscan" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="1" fill="#7DD3FC" opacity="0.045"/>
+    </pattern>
+    <clipPath id="fwin"><rect x="10" y="10" width="800" height="220" rx="14"/></clipPath>
+    <style>
+      text { font-size:17px }
+      @keyframes fblink { 0%,50% { opacity:1 } 51%,100% { opacity:0 } }
+      @keyframes fin    { from { opacity:0; transform:translateX(-8px) } to { opacity:1; transform:translateX(0) } }
+      @keyframes fpulse { 0%,100% { opacity:.5 } 50% { opacity:1 } }
+      @keyframes fdotpulse { 0%,100% { opacity:.55; r:5 } 50% { opacity:1; r:6 } }
+      @keyframes fscanmove { from { transform:translateY(0) } to { transform:translateY(3px) } }
+      .fcaret { animation:fblink 1.1s steps(1) infinite }
+      .fln    { opacity:0; animation:fin .5s ease-out forwards }
+      .fglow  { animation:fpulse 3s ease-in-out infinite }
+      .fdot   { animation:fdotpulse 2s ease-in-out infinite }
+      .fscan  { animation:fscanmove .5s linear infinite }
+    </style>
+  </defs>
+
+  <!-- window -->
+  <rect x="10" y="10" width="800" height="220" rx="14" fill="url(#fbody)"/>
+  <g clip-path="url(#fwin)">
+    <g class="fscan"><rect x="10" y="7" width="800" height="226" fill="url(#fscan)"/></g>
+  </g>
+  <rect x="10" y="10" width="800" height="220" rx="14" fill="none" stroke="#38BDF8" stroke-width="1.5" class="fglow" filter="url(#fborder)"/>
+
+  <!-- title bar -->
+  <circle cx="38" cy="30" r="6" fill="#38BDF8" filter="url(#ftext)"/>
+  <circle cx="60" cy="30" r="6" fill="#7DD3FC" filter="url(#ftext)"/>
+  <circle cx="82" cy="30" r="6" fill="#0EA5E9" filter="url(#ftext)"/>
+  <text x="410" y="35" text-anchor="middle" font-size="14" fill="#5B7290" letter-spacing="1">youkyi@infra: ~</text>
+  <line x1="10" y1="50" x2="810" y2="50" stroke="#38BDF8" stroke-opacity="0.35" class="fglow"/>
+
+  <!-- command -->
+  <text class="fln" style="animation-delay:.1s" x="30" y="82" filter="url(#ftext)">
+    <tspan fill="#38BDF8">youkyi@infra:~$</tspan><tspan fill="#E0F2FE"> systemctl status focus.target </tspan><tspan class="fcaret" fill="#38BDF8">&#9608;</tspan>
+  </text>
+
+  <!-- output -->
+  <g filter="url(#ftext)">
+    <circle class="fdot" cx="34" cy="109" r="5.5" fill="#34D399"/>
+    <text class="fln" style="animation-delay:.55s" x="48" y="114"><tspan fill="#E0F2FE">focus.target</tspan><tspan fill="#5B7290"> : what I'm building right now</tspan></text>
+
+    <text class="fln" style="animation-delay:.75s" x="34" y="139" xml:space="preserve"><tspan fill="#38BDF8">   ├─ </tspan><tspan fill="#7DD3FC">k8s-migration</tspan><tspan fill="#5B7290"> ...... </tspan><tspan fill="#C9D1D9">moving the lab to a Kubernetes cluster</tspan></text>
+    <text class="fln" style="animation-delay:.90s" x="34" y="164" xml:space="preserve"><tspan fill="#38BDF8">   ├─ </tspan><tspan fill="#7DD3FC">internal-pki</tspan><tspan fill="#5B7290"> ....... </tspan><tspan fill="#C9D1D9">rolling out an internal PKI</tspan></text>
+    <text class="fln" style="animation-delay:1.05s" x="34" y="189" xml:space="preserve"><tspan fill="#38BDF8">   ├─ </tspan><tspan fill="#7DD3FC">mail-hardening</tspan><tspan fill="#5B7290"> ..... </tspan><tspan fill="#C9D1D9">enforcing DANE / MTA-STS / DMARC</tspan></text>
+    <text class="fln" style="animation-delay:1.20s" x="34" y="214" xml:space="preserve"><tspan fill="#38BDF8">   └─ </tspan><tspan fill="#7DD3FC">access-hardening</tspan><tspan fill="#5B7290"> ... </tspan><tspan fill="#C9D1D9">tightening IAM &amp; zero-trust policies</tspan></text>
+  </g>
+</svg>
