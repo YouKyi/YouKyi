@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" fill="none" font-family="'Courier New', ui-monospace, monospace" role="img" aria-label="neofetch: SysAdmin, DevSecOps, PKI - Self-Hosting, Automation, Security">
   <defs>
     <linearGradient id="abody" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#0D1320"/>
-      <stop offset="1" stop-color="#0A0E14"/>
+      <stop offset="0" stop-color="#140A1E"/>
+      <stop offset="1" stop-color="#0B0712"/>
     </linearGradient>
     <filter id="atext" x="-30%" y="-30%" width="160%" height="160%">
       <feGaussianBlur stdDeviation="1.1" result="b"/>
@@ -13,7 +13,7 @@
       <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
     <pattern id="ascan" width="3" height="3" patternUnits="userSpaceOnUse">
-      <rect width="3" height="1" fill="#7DD3FC" opacity="0.045"/>
+      <rect width="3" height="1" fill="#E879F9" opacity="0.045"/>
     </pattern>
     <clipPath id="awin"><rect x="10" y="10" width="800" height="280" rx="14"/></clipPath>
     <style>
@@ -34,31 +34,31 @@
   <g clip-path="url(#awin)">
     <g class="ascan"><rect x="10" y="7" width="800" height="286" fill="url(#ascan)"/></g>
   </g>
-  <rect x="10" y="10" width="800" height="280" rx="14" fill="none" stroke="#38BDF8" stroke-width="1.5" class="aglow" filter="url(#aborder)"/>
+  <rect x="10" y="10" width="800" height="280" rx="14" fill="none" stroke="#BF00FF" stroke-width="1.5" class="aglow" filter="url(#aborder)"/>
 
   <!-- title bar -->
-  <circle cx="38" cy="30" r="6" fill="#38BDF8" filter="url(#atext)"/>
-  <circle cx="60" cy="30" r="6" fill="#7DD3FC" filter="url(#atext)"/>
-  <circle cx="82" cy="30" r="6" fill="#0EA5E9" filter="url(#atext)"/>
-  <text x="410" y="35" text-anchor="middle" font-size="14" fill="#5B7290" letter-spacing="1">youkyi@infra: ~</text>
-  <line x1="10" y1="50" x2="810" y2="50" stroke="#38BDF8" stroke-opacity="0.35" class="aglow"/>
+  <circle cx="38" cy="30" r="6" fill="#BF00FF" filter="url(#atext)"/>
+  <circle cx="60" cy="30" r="6" fill="#E879F9" filter="url(#atext)"/>
+  <circle cx="82" cy="30" r="6" fill="#8B00CC" filter="url(#atext)"/>
+  <text x="410" y="35" text-anchor="middle" font-size="14" fill="#8A6F9E" letter-spacing="1">youkyi@infra: ~</text>
+  <line x1="10" y1="50" x2="810" y2="50" stroke="#BF00FF" stroke-opacity="0.35" class="aglow"/>
 
   <!-- command -->
   <text class="aln" style="animation-delay:.1s" x="30" y="82" filter="url(#atext)">
-    <tspan fill="#38BDF8">youkyi@infra:~$</tspan><tspan fill="#E0F2FE"> neofetch </tspan><tspan class="acaret" fill="#38BDF8">&#9608;</tspan>
+    <tspan fill="#BF00FF">youkyi@infra:~$</tspan><tspan fill="#F3E8FF"> neofetch </tspan><tspan class="acaret" fill="#BF00FF">&#9608;</tspan>
   </text>
 
   <!-- ascii tux -->
-  <text class="aln" style="animation-delay:.5s" x="34" y="120" xml:space="preserve" fill="#38BDF8" filter="url(#atext)"><tspan x="34" dy="0">   .--.</tspan><tspan x="34" dy="23">  |o_o |</tspan><tspan x="34" dy="23">  |:_/ |</tspan><tspan x="34" dy="23"> //   \ \</tspan><tspan x="34" dy="23">(|     | )</tspan><tspan x="34" dy="23">/'\_   _/`\</tspan><tspan x="34" dy="23">\___)=(___/</tspan></text>
+  <text class="aln" style="animation-delay:.5s" x="34" y="120" xml:space="preserve" fill="#BF00FF" filter="url(#atext)"><tspan x="34" dy="0">   .--.</tspan><tspan x="34" dy="23">  |o_o |</tspan><tspan x="34" dy="23">  |:_/ |</tspan><tspan x="34" dy="23"> //   \ \</tspan><tspan x="34" dy="23">(|     | )</tspan><tspan x="34" dy="23">/'\_   _/`\</tspan><tspan x="34" dy="23">\___)=(___/</tspan></text>
 
   <!-- info -->
   <g filter="url(#atext)">
-    <text class="aln" style="animation-delay:.70s" x="215" y="120"><tspan fill="#7DD3FC">Identity ..:</tspan><tspan fill="#E0F2FE"> Alexandre Agasseau · @YouKyi</tspan></text>
-    <text class="aln" style="animation-delay:.82s" x="215" y="143"><tspan fill="#7DD3FC">Role ......:</tspan><tspan fill="#E0F2FE"> SysAdmin // DevSecOps // PKI</tspan></text>
-    <text class="aln" style="animation-delay:.94s" x="215" y="166"><tspan fill="#7DD3FC">Focus .....:</tspan><tspan fill="#E0F2FE"> Self-Hosting · Automation · Security</tspan></text>
-    <text class="aln" style="animation-delay:1.06s" x="215" y="189"><tspan fill="#7DD3FC">Approach ..:</tspan><tspan fill="#E0F2FE"> automation-first · defense in depth</tspan></text>
-    <text class="aln" style="animation-delay:1.18s" x="215" y="212"><tspan fill="#7DD3FC">Scope .....:</tspan><tspan fill="#E0F2FE"> bare-metal -&gt; cloud, 24/7</tspan></text>
-    <text class="aln" style="animation-delay:1.30s" x="215" y="235"><tspan fill="#7DD3FC">Mindset ...:</tspan><tspan fill="#E0F2FE"> redteam-aware · zero-trust</tspan></text>
-    <text class="aln" style="animation-delay:1.42s" x="215" y="258"><tspan fill="#7DD3FC">Motto .....:</tspan><tspan fill="#7DD3FC"> fix the system, not the symptom</tspan></text>
+    <text class="aln" style="animation-delay:.70s" x="215" y="120"><tspan fill="#E879F9">Identity ..:</tspan><tspan fill="#F3E8FF"> Alexandre Agasseau · @YouKyi</tspan></text>
+    <text class="aln" style="animation-delay:.82s" x="215" y="143"><tspan fill="#E879F9">Role ......:</tspan><tspan fill="#F3E8FF"> SysAdmin // DevSecOps // PKI</tspan></text>
+    <text class="aln" style="animation-delay:.94s" x="215" y="166"><tspan fill="#E879F9">Focus .....:</tspan><tspan fill="#F3E8FF"> Self-Hosting · Automation · Security</tspan></text>
+    <text class="aln" style="animation-delay:1.06s" x="215" y="189"><tspan fill="#E879F9">Approach ..:</tspan><tspan fill="#F3E8FF"> automation-first · defense in depth</tspan></text>
+    <text class="aln" style="animation-delay:1.18s" x="215" y="212"><tspan fill="#E879F9">Scope .....:</tspan><tspan fill="#F3E8FF"> bare-metal -&gt; cloud, 24/7</tspan></text>
+    <text class="aln" style="animation-delay:1.30s" x="215" y="235"><tspan fill="#E879F9">Mindset ...:</tspan><tspan fill="#F3E8FF"> redteam-aware · zero-trust</tspan></text>
+    <text class="aln" style="animation-delay:1.42s" x="215" y="258"><tspan fill="#E879F9">Motto .....:</tspan><tspan fill="#E879F9"> fix the system, not the symptom</tspan></text>
   </g>
 </svg>

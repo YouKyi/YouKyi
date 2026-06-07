@@ -1,17 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 180" width="1000" height="180" fill="none" role="img" aria-label="logout">
   <defs>
     <linearGradient id="fsun" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#7DD3FC"/>
-      <stop offset="1" stop-color="#0EA5E9"/>
+      <stop offset="0" stop-color="#E879F9"/>
+      <stop offset="1" stop-color="#8B00CC"/>
     </linearGradient>
     <linearGradient id="ffade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#38BDF8" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="0" stop-color="#BF00FF" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#BF00FF" stop-opacity="0"/>
     </linearGradient>
     <linearGradient id="fhline" x1="0" y1="0" x2="1" y2="0">
-      <stop offset="0" stop-color="#38BDF8" stop-opacity="0"/>
-      <stop offset="0.5" stop-color="#7DD3FC" stop-opacity="1"/>
-      <stop offset="1" stop-color="#38BDF8" stop-opacity="0"/>
+      <stop offset="0" stop-color="#BF00FF" stop-opacity="0"/>
+      <stop offset="0.5" stop-color="#E879F9" stop-opacity="1"/>
+      <stop offset="1" stop-color="#BF00FF" stop-opacity="0"/>
     </linearGradient>
     <filter id="fg" x="-60%" y="-60%" width="220%" height="220%">
       <feGaussianBlur stdDeviation="3" result="b"/>
@@ -28,12 +28,12 @@
     </style>
   </defs>
 
-  <rect width="1000" height="180" fill="#0A0E14"/>
+  <rect width="1000" height="180" fill="#0B0712"/>
 
   <!-- striped synthwave sun -->
   <g clip-path="url(#below)">
     <circle cx="500" cy="118" r="46" fill="url(#fsun)" class="fhalo" filter="url(#fg)"/>
-    <g stroke="#0A0E14" stroke-width="3">
+    <g stroke="#0B0712" stroke-width="3">
       <line x1="454" y1="104" x2="546" y2="104"/>
       <line x1="454" y1="112" x2="546" y2="112"/>
       <line x1="454" y1="120" x2="546" y2="120"/>
@@ -42,7 +42,7 @@
   </g>
 
   <!-- perspective grid floor -->
-  <g stroke="#38BDF8" stroke-opacity="0.5" stroke-width="1" filter="url(#fg)" clip-path="url(#below)">
+  <g stroke="#BF00FF" stroke-opacity="0.5" stroke-width="1" filter="url(#fg)" clip-path="url(#below)">
     <!-- converging verticals -->
     <line x1="500" y1="80" x2="-220" y2="180"/>
     <line x1="500" y1="80" x2="20"   y2="180"/>
@@ -65,7 +65,7 @@
   <rect x="0" y="79" width="1000" height="2" fill="url(#fhline)" class="fhalo" filter="url(#fg)"/>
 
   <!-- rising particles -->
-  <g fill="#7DD3FC" filter="url(#fg)">
+  <g fill="#E879F9" filter="url(#fg)">
     <circle class="fp" cx="180" cy="150" r="1.8" style="animation-delay:0s"/>
     <circle class="fp" cx="360" cy="155" r="1.4" style="animation-delay:1.6s"/>
     <circle class="fp" cx="640" cy="150" r="1.8" style="animation-delay:2.8s"/>
@@ -74,7 +74,7 @@
 
   <!-- logout prompt -->
   <g font-family="'Courier New', monospace" font-size="20" filter="url(#fg)">
-    <text x="500" y="46" text-anchor="middle" fill="#E0F2FE">youkyi@infra:~$ logout</text>
-    <rect class="fcar" x="715" y="30" width="10" height="20" fill="#38BDF8"/>
+    <text x="500" y="46" text-anchor="middle" fill="#F3E8FF">youkyi@infra:~$ logout</text>
+    <rect class="fcar" x="715" y="30" width="10" height="20" fill="#BF00FF"/>
   </g>
 </svg>

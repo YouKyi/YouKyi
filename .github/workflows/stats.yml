@@ -1,0 +1,45 @@
+name: Generate Stats Card
+
+on:
+  # Refresh every 2 days
+  schedule:
+    - cron: "0 4 */2 * *"
+  # Allow manual run from the Actions tab
+  workflow_dispatch:
+  # Regenerate on push to main
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+concurrency:
+  group: stats-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Generate stats card
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_LOGIN: ${{ github.repository_owner }}
+          STATS_OUT: assets/stats.svg
+        run: python .github/scripts/gen_stats.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/stats.svg
+          git diff --staged --quiet || git commit -m "chore: refresh stats card"
+          git push
