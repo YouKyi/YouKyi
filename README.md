@@ -15,23 +15,11 @@
 
 <img src="assets/divider.svg" width="100%" alt=""/>
 
-<!-- ───────────────────────────  ABOUT  ─────────────────────────── -->
+<!-- ──────────────────────  ABOUT // FOCUS  ─────────────────────── -->
 
 <div align="center">
-  <img src="assets/about.svg" alt="neofetch // SysAdmin // DevSecOps // PKI" width="100%"/>
-</div>
-
-<p align="center">
-  I design resilient infrastructures, from bare metal to the cloud,
-  with a strong focus on <b>Self-Hosting</b>, <b>automation</b> and <b>security</b>.
-</p>
-
-<img src="assets/divider.svg" width="100%" alt=""/>
-
-<!-- ───────────────────────  CURRENT FOCUS  ─────────────────────── -->
-
-<div align="center">
-  <img src="assets/focus.svg" alt="systemctl status focus.target" width="100%"/>
+  <img src="assets/about.svg" alt="neofetch // SysAdmin // DevSecOps // PKI" width="49%"/>
+  <img src="assets/focus.svg" alt="systemctl status focus.target" width="49%"/>
 </div>
 
 <img src="assets/divider.svg" width="100%" alt=""/>
@@ -81,38 +69,8 @@
 <div align="center">
 
 <h2>🏗️ Self-Hosted Services</h2>
-<p>What's actually running on my infrastructure, grouped by function.</p>
 
-<table>
-  <thead>
-    <tr>
-      <th align="left">Function</th>
-      <th align="left">Service / stack</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>📬 <b>Mailing</b></td>
-      <td>Stalwart Mail Server · ProtonMail · SPF / DKIM / DMARC / MTA-STS / DANE</td>
-    </tr>
-    <tr>
-      <td>🪪 <b>Identity (IAM)</b></td>
-      <td>Authentik (OIDC / OAuth2 / SAML) · LDAPs</td>
-    </tr>
-    <tr>
-      <td>🛡️ <b>Security</b></td>
-      <td>Wazuh (SIEM) · Step-CA (PKI) · BunkerWeb (WAF) · Vault</td>
-    </tr>
-    <tr>
-      <td>🌐 <b>Network &amp; Proxy</b></td>
-      <td>Traefik · Nginx · WireGuard · Netbird · Unifi</td>
-    </tr>
-    <tr>
-      <td>✨ <b>And more</b></td>
-      <td>Plenty of other self-hosted projects…</td>
-    </tr>
-  </tbody>
-</table>
+<img src="assets/services.svg" alt="self-hosted services: mail, identity, security, network and more" width="100%"/>
 
 </div>
 
@@ -125,12 +83,11 @@
 
 <h2>📊 GitHub Activity</h2>
 
-<img height="165" src="https://github-readme-stats.vercel.app/api?username=YouKyi&show_icons=true&count_private=true&hide_border=true&bg_color=0A0E14&title_color=38BDF8&icon_color=7DD3FC&text_color=C9D1D9" alt="GitHub stats" />
-<img height="165" src="https://github-readme-stats.vercel.app/api/top-langs/?username=YouKyi&layout=compact&hide_border=true&bg_color=0A0E14&title_color=38BDF8&text_color=C9D1D9" alt="Top languages" />
+<img src="assets/stats.svg" alt="GitHub stats: commits, stars, pull requests, issues, repositories, followers, top languages" width="100%"/>
 
 <br/>
 
-<img src="https://streak-stats.demolab.com?user=YouKyi&hide_border=true&background=0A0E14&stroke=38BDF8&ring=38BDF8&fire=7DD3FC&currStreakLabel=38BDF8&sideLabels=C9D1D9&dates=8B949E&currStreakNum=E0F2FE&sideNums=C9D1D9" alt="GitHub streak" />
+<img src="https://streak-stats.demolab.com?user=YouKyi&hide_border=true&background=0B0712&stroke=BF00FF&ring=BF00FF&fire=E879F9&currStreakLabel=BF00FF&sideLabels=D8C9E8&dates=8A6F9E&currStreakNum=F3E8FF&sideNums=D8C9E8" alt="GitHub streak" />
 
 <br/><br/>
 
@@ -152,16 +109,16 @@
 <h2>📇 Contact &amp; Socials</h2>
 
 <a href="https://github.com/YouKyi/YouKyi/blob/main/pgp/contact-pub.asc">
-  <img src="https://img.shields.io/badge/PGP-0093DD?style=flat-square&logo=gnuprivacyguard&logoColor=white" alt="PGP key" />
+  <img src="https://img.shields.io/badge/PGP-0093DD?style=for-the-badge&logo=gnuprivacyguard&logoColor=white" alt="PGP key" />
 </a>
 <a href="mailto:contact+github@youkyi.fr">
-  <img src="https://img.shields.io/badge/Email-D14836?style=flat-square&logo=gmail&logoColor=white" alt="Email" />
+  <img src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
 </a>
 <a href="https://x.com/intent/follow?screen_name=rc_youkyi">
-  <img src="https://img.shields.io/badge/X-000000?style=flat-square&logo=x&logoColor=white" alt="X" />
+  <img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white" alt="X" />
 </a>
 <a href="https://www.linkedin.com/in/alexandreagasseau/">
-  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=flat-square&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
 </a>
 
 </div>

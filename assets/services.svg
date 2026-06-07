@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 284" width="820" height="284" fill="none" font-family="'Courier New', ui-monospace, monospace" role="img" aria-label="self-hosted services: mail, identity, security, network and more">
+  <defs>
+    <linearGradient id="sbody" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#140A1E"/>
+      <stop offset="1" stop-color="#0B0712"/>
+    </linearGradient>
+    <filter id="stext" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.1" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="sborder" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="3.5" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="sscan" width="3" height="3" patternUnits="userSpaceOnUse">
+      <rect width="3" height="1" fill="#E879F9" opacity="0.045"/>
+    </pattern>
+    <clipPath id="swin"><rect x="10" y="10" width="800" height="264" rx="14"/></clipPath>
+    <style>
+      text { font-size:17px }
+      @keyframes sblink { 0%,50% { opacity:1 } 51%,100% { opacity:0 } }
+      @keyframes sin    { from { opacity:0; transform:translateX(-8px) } to { opacity:1; transform:translateX(0) } }
+      @keyframes spulse { 0%,100% { opacity:.5 } 50% { opacity:1 } }
+      @keyframes sdotpulse { 0%,100% { opacity:.55; r:5 } 50% { opacity:1; r:6 } }
+      @keyframes sscanmove { from { transform:translateY(0) } to { transform:translateY(3px) } }
+      .scaret { animation:sblink 1.1s steps(1) infinite }
+      .sln    { opacity:0; animation:sin .5s ease-out forwards }
+      .sglow  { animation:spulse 3s ease-in-out infinite }
+      .sdot   { animation:sdotpulse 2s ease-in-out infinite }
+      .sscan  { animation:sscanmove .5s linear infinite }
+    </style>
+  </defs>
+
+  <!-- window -->
+  <rect x="10" y="10" width="800" height="264" rx="14" fill="url(#sbody)"/>
+  <g clip-path="url(#swin)">
+    <g class="sscan"><rect x="10" y="7" width="800" height="270" fill="url(#sscan)"/></g>
+  </g>
+  <rect x="10" y="10" width="800" height="264" rx="14" fill="none" stroke="#BF00FF" stroke-width="1.5" class="sglow" filter="url(#sborder)"/>
+
+  <!-- title bar -->
+  <circle cx="38" cy="30" r="6" fill="#BF00FF" filter="url(#stext)"/>
+  <circle cx="60" cy="30" r="6" fill="#E879F9" filter="url(#stext)"/>
+  <circle cx="82" cy="30" r="6" fill="#8B00CC" filter="url(#stext)"/>
+  <text x="410" y="35" text-anchor="middle" font-size="14" fill="#8A6F9E" letter-spacing="1">youkyi@infra: ~</text>
+  <line x1="10" y1="50" x2="810" y2="50" stroke="#BF00FF" stroke-opacity="0.35" class="sglow"/>
+
+  <!-- command -->
+  <text class="sln" style="animation-delay:.1s" x="30" y="82" filter="url(#stext)">
+    <tspan fill="#BF00FF">youkyi@infra:~$</tspan><tspan fill="#F3E8FF"> services --list </tspan><tspan class="scaret" fill="#BF00FF">&#9608;</tspan>
+  </text>
+
+  <!-- output -->
+  <g filter="url(#stext)">
+    <circle class="sdot" cx="34" cy="112" r="5.5" fill="#34D399"/>
+    <text class="sln" style="animation-delay:.55s" x="48" y="117"><tspan fill="#F3E8FF">infra.services</tspan><tspan fill="#8A6F9E"> : what's actually running on my homelab</tspan></text>
+
+    <text class="sln" style="animation-delay:.75s" x="34" y="146" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">mail</tspan><tspan fill="#8A6F9E"> ........ </tspan><tspan fill="#D8C9E8">Stalwart &#183; ProtonMail &#183; DKIM/DMARC/MTA-STS/DANE</tspan></text>
+    <text class="sln" style="animation-delay:.90s" x="34" y="174" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">iam</tspan><tspan fill="#8A6F9E"> ......... </tspan><tspan fill="#D8C9E8">Authentik (OIDC/OAuth2/SAML) &#183; LDAPs</tspan></text>
+    <text class="sln" style="animation-delay:1.05s" x="34" y="202" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">security</tspan><tspan fill="#8A6F9E"> .... </tspan><tspan fill="#D8C9E8">Wazuh &#183; Step-CA &#183; BunkerWeb &#183; Vault</tspan></text>
+    <text class="sln" style="animation-delay:1.20s" x="34" y="230" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">network</tspan><tspan fill="#8A6F9E"> ..... </tspan><tspan fill="#D8C9E8">Traefik &#183; Nginx &#183; WireGuard &#183; Netbird &#183; Unifi</tspan></text>
+    <text class="sln" style="animation-delay:1.35s" x="34" y="258" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">more</tspan><tspan fill="#8A6F9E"> ........ </tspan><tspan fill="#8A6F9E">plenty of other self-hosted projects&#8230;</tspan></text>
+  </g>
+</svg>
