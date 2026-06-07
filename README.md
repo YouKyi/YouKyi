@@ -13,7 +13,7 @@
 
 </div>
 
-<img src="assets/divider.svg?v=2" width="100%" alt=""/>
+<img src="assets/divider.svg?v=3" width="100%" alt=""/>
 
 <!-- ──────────────────────  ABOUT // FOCUS  ─────────────────────── -->
 
@@ -22,7 +22,7 @@
   <img src="assets/focus.svg" alt="systemctl status focus.target" width="49%"/>
 </div>
 
-<img src="assets/divider.svg?v=2" width="100%" alt=""/>
+<img src="assets/divider.svg?v=3" width="100%" alt=""/>
 
 <!-- ────────────────────────  TECH STACK  ───────────────────────── -->
 
@@ -62,7 +62,7 @@
 
 </div>
 
-<img src="assets/divider.svg?v=2" width="100%" alt=""/>
+<img src="assets/divider.svg?v=3" width="100%" alt=""/>
 
 <!-- ─────────────────────  LAB & PROJECTS  ──────────────────────── -->
 
@@ -74,7 +74,7 @@
 
 </div>
 
-<img src="assets/divider.svg?v=2" width="100%" alt=""/>
+<img src="assets/divider.svg?v=3" width="100%" alt=""/>
 
 <!-- ──────────────────────  GITHUB ACTIVITY  ────────────────────── -->
 
@@ -99,7 +99,7 @@
 
 </div>
 
-<img src="assets/divider.svg?v=2" width="100%" alt=""/>
+<img src="assets/divider.svg?v=3" width="100%" alt=""/>
 
 <!-- ────────────────────────  SOCIALS  ──────────────────────────── -->
 
