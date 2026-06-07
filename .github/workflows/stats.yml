@@ -31,7 +31,10 @@ jobs:
 
       - name: Generate stats card
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Optional PAT (repo + read:user) to include private + all-time commits.
+          # Falls back to GITHUB_TOKEN (public only) when the secret is absent.
+          GH_TOKEN: ${{ secrets.STATS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_LOGIN: ${{ github.repository_owner }}
           STATS_OUT: assets/stats.svg
         run: python .github/scripts/gen_stats.py

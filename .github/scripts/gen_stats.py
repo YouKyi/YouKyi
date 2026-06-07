@@ -1,11 +1,19 @@
 #!/usr/bin/env python3
 """Generate a violet terminal-style GitHub stats card (assets/stats.svg).
 
-Runs in CI with GITHUB_TOKEN (GraphQL). With no token it writes a placeholder
-card (dashes); with --sample it writes representative numbers (for previews).
+Token resolution: GH_TOKEN (a personal access token, optional) is preferred so
+that private contributions and all-time commits can be counted; otherwise it
+falls back to GITHUB_TOKEN (public data only). With no token it writes a
+placeholder card (dashes); with --sample it writes representative numbers.
 No third-party dependencies: standard library only.
+
+Languages / stars / repo count are always computed from PUBLIC repos only
+(privacy:PUBLIC), so a PAT never leaks private project details onto the card.
+Only the aggregate commit count includes private contributions (when a PAT is
+provided).
 """
 import argparse
+import datetime
 import json
 import os
 import sys
@@ -14,14 +22,15 @@ from xml.sax.saxutils import escape
 
 GRAPHQL = "https://api.github.com/graphql"
 
-QUERY = """
+USER_QUERY = """
 query($login:String!){
   user(login:$login){
     login
+    createdAt
     followers{ totalCount }
     pullRequests{ totalCount }
     issues{ totalCount }
-    repositories(first:100, ownerAffiliations:OWNER, isFork:false,
+    repositories(first:100, ownerAffiliations:OWNER, isFork:false, privacy:PUBLIC,
                  orderBy:{field:STARGAZERS, direction:DESC}){
       totalCount
       nodes{
@@ -31,28 +40,53 @@ query($login:String!){
         }
       }
     }
-    contributionsCollection{ totalCommitContributions }
   }
 }
 """
 
 
-def fetch(token, login):
-    body = json.dumps({"query": QUERY, "variables": {"login": login}}).encode()
+def _post(token, query, variables):
+    body = json.dumps({"query": query, "variables": variables}).encode()
     req = urllib.request.Request(
         GRAPHQL,
         data=body,
         headers={
             "Authorization": f"bearer {token}",
             "Content-Type": "application/json",
-            "User-Agent": f"{login}-stats-card",
+            "User-Agent": "stats-card",
         },
     )
     with urllib.request.urlopen(req, timeout=30) as r:
         payload = json.load(r)
     if "errors" in payload:
         raise RuntimeError(payload["errors"])
-    u = payload["data"]["user"]
+    return payload["data"]
+
+
+def all_time_commits(token, login, start_year):
+    """Sum totalCommitContributions over every year since account creation.
+    Includes private commits when `token` is a PAT able to see them."""
+    now = datetime.datetime.now(datetime.timezone.utc)
+    this_year = now.year
+    years = range(start_year, this_year + 1)
+
+    def upto(y):
+        if y == this_year:
+            return now.strftime("%Y-%m-%dT%H:%M:%SZ")
+        return f"{y}-12-31T23:59:59Z"
+
+    aliases = " ".join(
+        f'y{y}: contributionsCollection(from:"{y}-01-01T00:00:00Z", '
+        f'to:"{upto(y)}"){{ totalCommitContributions }}'
+        for y in years
+    )
+    q = "query($login:String!){ user(login:$login){ " + aliases + " } }"
+    u = _post(token, q, {"login": login})["user"]
+    return sum(u[f"y{y}"]["totalCommitContributions"] for y in years)
+
+
+def fetch(token, login):
+    u = _post(token, USER_QUERY, {"login": login})["user"]
     repos = u["repositories"]["nodes"]
     stars = sum(n["stargazerCount"] for n in repos)
     langs = {}
@@ -60,9 +94,20 @@ def fetch(token, login):
         for e in n["languages"]["edges"]:
             langs[e["node"]["name"]] = langs.get(e["node"]["name"], 0) + e["size"]
     top = [name for name, _ in sorted(langs.items(), key=lambda kv: kv[1], reverse=True)[:5]]
+    start_year = int(u["createdAt"][:4])
+    try:
+        commits = all_time_commits(token, login, start_year)
+    except Exception as exc:  # fall back to last-year commits so the card still builds
+        print(f"warning: all-time commits failed ({exc}); using last year", file=sys.stderr)
+        lastyear = _post(
+            token,
+            "query($login:String!){ user(login:$login){ contributionsCollection{ totalCommitContributions } } }",
+            {"login": login},
+        )
+        commits = lastyear["user"]["contributionsCollection"]["totalCommitContributions"]
     return {
         "login": u["login"],
-        "commits": u["contributionsCollection"]["totalCommitContributions"],
+        "commits": commits,
         "stars": stars,
         "prs": u["pullRequests"]["totalCount"],
         "issues": u["issues"]["totalCount"],
