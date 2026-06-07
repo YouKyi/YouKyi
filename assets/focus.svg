@@ -17,7 +17,7 @@
     </pattern>
     <clipPath id="fwin"><rect x="10" y="10" width="800" height="280" rx="14"/></clipPath>
     <style>
-      text { font-size:17px }
+      text { font-size:19px }
       @keyframes fblink { 0%,50% { opacity:1 } 51%,100% { opacity:0 } }
       @keyframes fin    { from { opacity:0; transform:translateX(-8px) } to { opacity:1; transform:translateX(0) } }
       @keyframes fpulse { 0%,100% { opacity:.5 } 50% { opacity:1 } }
