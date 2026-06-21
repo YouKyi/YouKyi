@@ -51,7 +51,7 @@
     <circle class="gdot" cx="34" cy="114" r="5.5" fill="#34D399"/>
     <text class="sln" style="animation-delay:.55s" x="48" y="119"><tspan fill="#F3E8FF">infra.github</tspan><tspan fill="#8A6F9E"> : public activity summary</tspan></text>
 
-    <text class="sln" style="animation-delay:0.75s" x="34" y="150" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">commits</tspan><tspan fill="#8A6F9E"> ......... </tspan><tspan fill="#D8C9E8">35,650</tspan></text>
+    <text class="sln" style="animation-delay:0.75s" x="34" y="150" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">commits</tspan><tspan fill="#8A6F9E"> ......... </tspan><tspan fill="#D8C9E8">36,737</tspan></text>
     <text class="sln" style="animation-delay:0.8s" x="420" y="150" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">stars</tspan><tspan fill="#8A6F9E"> ........... </tspan><tspan fill="#D8C9E8">6</tspan></text>
     <text class="sln" style="animation-delay:0.9s" x="34" y="178" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">pull requests</tspan><tspan fill="#8A6F9E"> ... </tspan><tspan fill="#D8C9E8">17</tspan></text>
     <text class="sln" style="animation-delay:0.95s" x="420" y="178" xml:space="preserve"><tspan fill="#BF00FF">  &#9656; </tspan><tspan fill="#E879F9">issues</tspan><tspan fill="#8A6F9E"> .......... </tspan><tspan fill="#D8C9E8">14</tspan></text>
