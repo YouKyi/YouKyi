@@ -99,15 +99,23 @@ def _rest(token, url):
     return urllib.request.urlopen(req, timeout=30)
 
 
-def list_owned_repos(token, login):
-    """All owned, non-fork repos (public, plus private when token is a PAT)."""
-    repos, cursor = [], None
+def list_repos(token, login):
+    """Non-fork repos the user owns OR can reach via org membership / collaboration
+    (private + org repos included when token is a PAT with repo + read:org).
+    Deduplicated across affiliations."""
+    repos, seen, cursor = [], set(), None
     q = ("query($login:String!,$cursor:String){ user(login:$login){ "
-         "repositories(first:100, ownerAffiliations:OWNER, isFork:false, after:$cursor){ "
+         "repositories(first:100, "
+         "ownerAffiliations:[OWNER,ORGANIZATION_MEMBER,COLLABORATOR], "
+         "isFork:false, after:$cursor){ "
          "pageInfo{ hasNextPage endCursor } nodes{ name owner{ login } } } } }")
     while True:
         page = _post(token, q, {"login": login, "cursor": cursor})["user"]["repositories"]
-        repos += [(n["owner"]["login"], n["name"]) for n in page["nodes"]]
+        for n in page["nodes"]:
+            key = (n["owner"]["login"], n["name"])
+            if key not in seen:
+                seen.add(key)
+                repos.append(key)
         if not page["pageInfo"]["hasNextPage"]:
             return repos
         cursor = page["pageInfo"]["endCursor"]
@@ -141,7 +149,7 @@ def repo_loc(token, owner, name, login):
 def lines_of_code(token, login):
     """Aggregate additions / deletions / net across all owned repos."""
     add = dele = 0
-    for owner, name in list_owned_repos(token, login):
+    for owner, name in list_repos(token, login):
         a, d = repo_loc(token, owner, name, login)
         add += a
         dele += d
@@ -296,7 +304,7 @@ def render(s):
 
   <g filter="url(#gtext)">
     <circle class="gdot" cx="34" cy="114" r="5.5" fill="#34D399"/>
-    <text class="sln" style="animation-delay:.55s" x="48" y="119"><tspan fill="#F3E8FF">infra.github</tspan><tspan fill="#8A6F9E"> : public activity summary</tspan></text>
+    <text class="sln" style="animation-delay:.55s" x="48" y="119"><tspan fill="#F3E8FF">infra.github</tspan><tspan fill="#8A6F9E"> : {escape(s.get("summary", "public activity summary"))}</tspan></text>
 
 {rows}
   </g>
@@ -319,6 +327,11 @@ def main():
             print("warning: no token, writing placeholder card", file=sys.stderr)
         data = placeholder(args.login, sample=args.sample)
 
+    data["summary"] = (
+        "private + public activity summary"
+        if (bool(os.environ.get("GH_TOKEN")) or args.sample)
+        else "public activity summary"
+    )
     svg = render(data)
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as f:
