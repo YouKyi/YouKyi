@@ -31,8 +31,9 @@ jobs:
 
       - name: Generate stats card
         env:
-          # Optional PAT (repo + read:user) to include private + all-time commits.
-          # Falls back to GITHUB_TOKEN (public only) when the secret is absent.
+          # Optional PAT to include private + org repos and all-time commits.
+          # Scopes: repo + read:org. If an org enforces SAML SSO, authorize the
+          # PAT for that org. Falls back to GITHUB_TOKEN (public only) if absent.
           GH_TOKEN: ${{ secrets.STATS_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_LOGIN: ${{ github.repository_owner }}
@@ -44,5 +45,19 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add assets/stats.svg
-          git diff --staged --quiet || git commit -m "chore: refresh stats card"
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+          git commit -m "chore: refresh stats card"
+          # main may have moved since checkout (concurrent push) -> rebase & retry
+          # to avoid non-fast-forward rejections.
+          for attempt in 1 2 3; do
+            if git push; then
+              echo "Pushed on attempt $attempt."
+              exit 0
+            fi
+            echo "Push rejected (attempt $attempt) - rebasing on origin/${GITHUB_REF_NAME}..."
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+          done
           git push
