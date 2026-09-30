@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate a violet terminal-style GitHub stats card (assets/stats.svg).
+"""Generate self-contained youkyi GitHub stats cards (desktop and mobile).
 
 Token resolution: GH_TOKEN (a personal access token, optional) is preferred so
 that private contributions and all-time commits can be counted; otherwise it
@@ -13,11 +13,14 @@ Only the aggregate commit count includes private contributions (when a PAT is
 provided).
 """
 import argparse
+import base64
 import datetime
 import json
 import os
 import sys
 import time
+import textwrap
+from pathlib import Path
 import urllib.request
 from xml.sax.saxutils import escape
 
@@ -208,108 +211,75 @@ def placeholder(login, sample=False):
 
 
 def num(v):
-    return "—" if v is None else f"{v:,}"
+    return "—" if v is None else f"{v:,}".replace(",", " ")
 
 
-def line(x, y, delay, label, value, target):
-    dots = max(1, target - (4 + len(label) + 2))
-    return (
-        f'    <text class="sln" style="animation-delay:{delay}s" x="{x}" y="{y}" xml:space="preserve">'
-        f'<tspan fill="#BF00FF">  &#9656; </tspan>'
-        f'<tspan fill="#E879F9">{escape(label)}</tspan>'
-        f'<tspan fill="#8A6F9E"> {"."*dots} </tspan>'
-        f'<tspan fill="#D8C9E8">{escape(value)}</tspan></text>'
+def render(s, mobile=False):
+    # Embedded fonts keep SVG <img> rendering independent of external requests.
+    fonts = Path(__file__).resolve().parents[2] / "assets/fonts"
+    faces = "\n".join(
+        f"@font-face{{font-family:'{family}';src:url(data:font/woff2;base64,"
+        f"{base64.b64encode((fonts / filename).read_bytes()).decode()}) format('woff2')}}"
+        for family, filename in [("Inter", "inter-400.woff2"),
+                                 ("IBM Plex Mono", "ibm-plex-mono-400.woff2")]
     )
-
-
-def render(s):
-    langs = " · ".join(s["langs"]) if s["langs"] else "computing…"
-    if s["loc_net"] is None:
-        loc_val = '<tspan fill="#D8C9E8">—</tspan>'
-    else:
-        loc_val = (
-            f'<tspan fill="#D8C9E8">{s["loc_net"]:,} </tspan>'
-            f'<tspan fill="#8A6F9E">(</tspan>'
-            f'<tspan fill="#34D399">{s["loc_add"]:,}++</tspan>'
-            f'<tspan fill="#8A6F9E">, </tspan>'
-            f'<tspan fill="#FB7185">{s["loc_del"]:,}--</tspan>'
-            f'<tspan fill="#8A6F9E">)</tspan>'
+    width = 420 if mobile else 820
+    langs = " · ".join(s["langs"]) or "Non disponibles"
+    lang_rows = textwrap.wrap(langs, width=33 if mobile else 76)
+    height = (430 if mobile else 318) + 24 * len(lang_rows)
+    summary = {
+        "private + public activity summary": "Contributions publiques + privées",
+        "public activity summary": "Contributions publiques",
+        "sample": "Exemple · données fictives",
+    }.get(s.get("summary"), "Contributions GitHub")
+    metrics = [("Commits", "commits"), ("Étoiles", "stars"),
+               ("Pull requests", "prs"), ("Issues", "issues"),
+               ("Dépôts publics", "repos"), ("Abonnés", "followers")]
+    rows = []
+    for i, (label, key) in enumerate(metrics):
+        x = 28 if mobile or i % 2 == 0 else 434
+        y = 110 + 42 * (i if mobile else i // 2)
+        right = width - 28 if mobile or i % 2 else 386
+        rows.append(
+            f'<text x="{x}" y="{y}" class="label">{escape(label)}</text>'
+            f'<text x="{right}" y="{y}" text-anchor="end" class="value">{num(s[key])}</text>'
         )
-    loc = (
-        '    <text class="sln" style="animation-delay:1.20s" x="34" y="238" xml:space="preserve">'
-        '<tspan fill="#BF00FF">  &#9656; </tspan>'
-        '<tspan fill="#E879F9">lines of code</tspan>'
-        '<tspan fill="#8A6F9E"> ... </tspan>' + loc_val + '</text>'
-    )
-    rows = [
-        line(34, 150, 0.75, "commits", num(s["commits"]), 22),
-        line(420, 150, 0.80, "stars", num(s["stars"]), 22),
-        line(34, 178, 0.90, "pull requests", num(s["prs"]), 22),
-        line(420, 178, 0.95, "issues", num(s["issues"]), 22),
-        line(34, 206, 1.05, "repositories", num(s["repos"]), 22),
-        line(420, 206, 1.10, "followers", num(s["followers"]), 22),
-        loc,
-        line(34, 268, 1.30, "top langs", langs, 22),
-    ]
-    rows = "\n".join(rows)
+    loc_y = 376 if mobile else 264
+    loc = num(s["loc_net"])
+    delta = f'+{num(s["loc_add"])} / −{num(s["loc_del"])}'
+    rows.append(f'<text x="28" y="{loc_y - 28}" class="label">Lignes · solde des ajouts / suppressions</text>')
+    rows.append(f'<text x="28" y="{loc_y}" class="value">{loc}</text>')
+    rows.append(f'<text x="{width - 28}" y="{loc_y}" text-anchor="end" class="label">{delta}</text>')
+    for i, row in enumerate(lang_rows):
+        rows.append(f'<text x="28" y="{loc_y + 46 + 24 * i}" class="label">{escape(row)}</text>')
     login = escape(s["login"])
-    return f"""<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 300" width="820" height="300" fill="none" font-family="'Courier New', ui-monospace, monospace" role="img" aria-label="github stats for {login}">
-  <defs>
-    <linearGradient id="gbody" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#140A1E"/>
-      <stop offset="1" stop-color="#0B0712"/>
-    </linearGradient>
-    <filter id="gtext" x="-30%" y="-30%" width="160%" height="160%">
-      <feGaussianBlur stdDeviation="1.1" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <filter id="gborder" x="-20%" y="-40%" width="140%" height="180%">
-      <feGaussianBlur stdDeviation="3.5" result="b"/>
-      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-    </filter>
-    <pattern id="gscan" width="3" height="3" patternUnits="userSpaceOnUse">
-      <rect width="3" height="1" fill="#E879F9" opacity="0.045"/>
-    </pattern>
-    <clipPath id="gwin"><rect x="10" y="10" width="800" height="280" rx="14"/></clipPath>
-    <style>
-      text {{ font-size:17px }}
-      @keyframes gblink {{ 0%,50% {{ opacity:1 }} 51%,100% {{ opacity:0 }} }}
-      @keyframes gin    {{ from {{ opacity:0; transform:translateX(-8px) }} to {{ opacity:1; transform:translateX(0) }} }}
-      @keyframes gpulse {{ 0%,100% {{ opacity:.5 }} 50% {{ opacity:1 }} }}
-      @keyframes gdotpulse {{ 0%,100% {{ opacity:.55; r:5 }} 50% {{ opacity:1; r:6 }} }}
-      @keyframes gscanmove {{ from {{ transform:translateY(0) }} to {{ transform:translateY(3px) }} }}
-      .gcaret {{ animation:gblink 1.1s steps(1) infinite }}
-      .sln    {{ opacity:0; animation:gin .5s ease-out forwards }}
-      .gglow  {{ animation:gpulse 3s ease-in-out infinite }}
-      .gdot   {{ animation:gdotpulse 2s ease-in-out infinite }}
-      .gscan  {{ animation:gscanmove .5s linear infinite }}
-    </style>
-  </defs>
-
-  <rect x="10" y="10" width="800" height="280" rx="14" fill="url(#gbody)"/>
-  <g clip-path="url(#gwin)">
-    <g class="gscan"><rect x="10" y="7" width="800" height="286" fill="url(#gscan)"/></g>
-  </g>
-  <rect x="10" y="10" width="800" height="280" rx="14" fill="none" stroke="#BF00FF" stroke-width="1.5" class="gglow" filter="url(#gborder)"/>
-
-  <circle cx="38" cy="30" r="6" fill="#BF00FF" filter="url(#gtext)"/>
-  <circle cx="60" cy="30" r="6" fill="#E879F9" filter="url(#gtext)"/>
-  <circle cx="82" cy="30" r="6" fill="#8B00CC" filter="url(#gtext)"/>
-  <text x="410" y="35" text-anchor="middle" font-size="14" fill="#8A6F9E" letter-spacing="1">youkyi@infra: ~</text>
-  <line x1="10" y1="50" x2="810" y2="50" stroke="#BF00FF" stroke-opacity="0.35" class="gglow"/>
-
-  <text class="sln" style="animation-delay:.1s" x="30" y="84" filter="url(#gtext)">
-    <tspan fill="#BF00FF">youkyi@infra:~$</tspan><tspan fill="#F3E8FF"> gh stats --user {login} </tspan><tspan class="gcaret" fill="#BF00FF">&#9608;</tspan>
-  </text>
-
-  <g filter="url(#gtext)">
-    <circle class="gdot" cx="34" cy="114" r="5.5" fill="#34D399"/>
-    <text class="sln" style="animation-delay:.55s" x="48" y="119"><tspan fill="#F3E8FF">infra.github</tspan><tspan fill="#8A6F9E"> : {escape(s.get("summary", "public activity summary"))}</tspan></text>
-
-{rows}
-  </g>
+    description = escape(f"{summary}. " + "; ".join(
+        f"{label} : {num(s[key])}" for label, key in metrics
+    ) + f". Lignes : {loc}, {delta}. Langages : {langs}.")
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img" aria-labelledby="title desc">
+  <title id="title">Activité GitHub · {login}</title>
+  <desc id="desc">{description}</desc>
+  <style>
+    {faces}
+    .page {{ fill:#F8F7F4 }}
+    .heading,.value {{ fill:#1A1816 }}
+    .label {{ fill:#57534C }}
+    .heading,.label {{ font-family:'Inter',sans-serif; font-weight:400 }}
+    .heading {{ font-size:24px }}
+    .label {{ font-size:18px }}
+    .value {{ font-family:'IBM Plex Mono',monospace; font-size:22px }}
+    @media (prefers-color-scheme:dark) {{
+      .page {{ fill:#191715 }}
+      .heading,.value {{ fill:#F2F0EC }}
+      .label {{ fill:#B5AFA6 }}
+    }}
+  </style>
+  <rect width="{width}" height="{height}" rx="16" class="page" />
+  <text x="28" y="40" class="heading">Activité GitHub · {login}</text>
+  <text x="28" y="68" class="label">{escape(summary)}</text>
+  {"".join(rows)}
 </svg>
-"""
+'''
 
 
 def main():
@@ -328,15 +298,17 @@ def main():
         data = placeholder(args.login, sample=args.sample)
 
     data["summary"] = (
-        "private + public activity summary"
-        if (bool(os.environ.get("GH_TOKEN")) or args.sample)
+        "sample" if args.sample else "private + public activity summary"
+        if bool(os.environ.get("GH_TOKEN"))
         else "public activity summary"
     )
     svg = render(data)
     os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
     with open(args.out, "w", encoding="utf-8") as f:
         f.write(svg)
-    print(f"wrote {args.out} (commits={data['commits']} stars={data['stars']} langs={data['langs']})")
+    mobile_out = Path(args.out).with_stem(Path(args.out).stem + "-mobile")
+    mobile_out.write_text(render(data, mobile=True), encoding="utf-8")
+    print(f"wrote {args.out} + {mobile_out} (commits={data['commits']} stars={data['stars']} langs={data['langs']})")
 
 
 if __name__ == "__main__":
