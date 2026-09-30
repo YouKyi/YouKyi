@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 820 342" width="820" height="342" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 478" width="420" height="478" role="img" aria-labelledby="title desc">
   <title id="title">Activité GitHub · YouKyi</title>
   <desc id="desc">Contributions publiques + privées. Commits : 5 165; Étoiles : 11; Pull requests : 25; Issues : 15; Dépôts publics : 10; Abonnés : 17. Lignes : 382 267, +461 709 / −79 442. Langages : TypeScript · CSS · Svelte · JavaScript · HTML.</desc>
   <style>
@@ -17,8 +17,8 @@
       .label { fill:#B5AFA6 }
     }
   </style>
-  <rect width="820" height="342" rx="16" class="page" />
+  <rect width="420" height="478" rx="16" class="page" />
   <text x="28" y="40" class="heading">Activité GitHub · YouKyi</text>
   <text x="28" y="68" class="label">Contributions publiques + privées</text>
-  <text x="28" y="110" class="label">Commits</text><text x="386" y="110" text-anchor="end" class="value">5 165</text><text x="434" y="110" class="label">Étoiles</text><text x="792" y="110" text-anchor="end" class="value">11</text><text x="28" y="152" class="label">Pull requests</text><text x="386" y="152" text-anchor="end" class="value">25</text><text x="434" y="152" class="label">Issues</text><text x="792" y="152" text-anchor="end" class="value">15</text><text x="28" y="194" class="label">Dépôts publics</text><text x="386" y="194" text-anchor="end" class="value">10</text><text x="434" y="194" class="label">Abonnés</text><text x="792" y="194" text-anchor="end" class="value">17</text><text x="28" y="236" class="label">Lignes · solde des ajouts / suppressions</text><text x="28" y="264" class="value">382 267</text><text x="792" y="264" text-anchor="end" class="label">+461 709 / −79 442</text><text x="28" y="310" class="label">TypeScript · CSS · Svelte · JavaScript · HTML</text>
+  <text x="28" y="110" class="label">Commits</text><text x="392" y="110" text-anchor="end" class="value">5 165</text><text x="28" y="152" class="label">Étoiles</text><text x="392" y="152" text-anchor="end" class="value">11</text><text x="28" y="194" class="label">Pull requests</text><text x="392" y="194" text-anchor="end" class="value">25</text><text x="28" y="236" class="label">Issues</text><text x="392" y="236" text-anchor="end" class="value">15</text><text x="28" y="278" class="label">Dépôts publics</text><text x="392" y="278" text-anchor="end" class="value">10</text><text x="28" y="320" class="label">Abonnés</text><text x="392" y="320" text-anchor="end" class="value">17</text><text x="28" y="348" class="label">Lignes · solde des ajouts / suppressions</text><text x="28" y="376" class="value">382 267</text><text x="392" y="376" text-anchor="end" class="label">+461 709 / −79 442</text><text x="28" y="422" class="label">TypeScript · CSS · Svelte ·</text><text x="28" y="446" class="label">JavaScript · HTML</text>
 </svg>
