@@ -214,7 +214,30 @@ def num(v):
     return "—" if v is None else f"{v:,}".replace(",", " ")
 
 
-def render(s, mobile=False):
+TEXT = {
+    "fr": {
+        "activity": "Activité GitHub", "unavailable": "Non disponibles",
+        "private + public activity summary": "Contributions publiques + privées",
+        "public activity summary": "Contributions publiques",
+        "sample": "Exemple · données fictives", "summary": "Contributions GitHub",
+        "metrics": ("Commits", "Étoiles", "Pull requests", "Issues", "Dépôts publics", "Abonnés"),
+        "lines": "Lignes · solde des ajouts / suppressions",
+        "lines_desc": "Lignes", "languages": "Langages",
+    },
+    "en": {
+        "activity": "GitHub activity", "unavailable": "Unavailable",
+        "private + public activity summary": "Public + private contributions",
+        "public activity summary": "Public contributions",
+        "sample": "Example · fictional data", "summary": "GitHub contributions",
+        "metrics": ("Commits", "Stars", "Pull requests", "Issues", "Public repositories", "Followers"),
+        "lines": "Lines · net additions / deletions",
+        "lines_desc": "Lines", "languages": "Languages",
+    },
+}
+
+
+def render(s, mobile=False, language="fr"):
+    text = TEXT[language]
     # Embedded fonts keep SVG <img> rendering independent of external requests.
     fonts = Path(__file__).resolve().parents[2] / "assets/fonts"
     faces = "\n".join(
@@ -224,17 +247,11 @@ def render(s, mobile=False):
                                  ("IBM Plex Mono", "ibm-plex-mono-400.woff2")]
     )
     width = 420 if mobile else 820
-    langs = " · ".join(s["langs"]) or "Non disponibles"
+    langs = " · ".join(s["langs"]) or text["unavailable"]
     lang_rows = textwrap.wrap(langs, width=33 if mobile else 76)
     height = (430 if mobile else 318) + 24 * len(lang_rows)
-    summary = {
-        "private + public activity summary": "Contributions publiques + privées",
-        "public activity summary": "Contributions publiques",
-        "sample": "Exemple · données fictives",
-    }.get(s.get("summary"), "Contributions GitHub")
-    metrics = [("Commits", "commits"), ("Étoiles", "stars"),
-               ("Pull requests", "prs"), ("Issues", "issues"),
-               ("Dépôts publics", "repos"), ("Abonnés", "followers")]
+    summary = text.get(s.get("summary"), text["summary"])
+    metrics = list(zip(text["metrics"], ("commits", "stars", "prs", "issues", "repos", "followers")))
     rows = []
     for i, (label, key) in enumerate(metrics):
         x = 28 if mobile or i % 2 == 0 else 434
@@ -247,7 +264,7 @@ def render(s, mobile=False):
     loc_y = 376 if mobile else 264
     loc = num(s["loc_net"])
     delta = f'+{num(s["loc_add"])} / −{num(s["loc_del"])}'
-    rows.append(f'<text x="28" y="{loc_y - 28}" class="label">Lignes · solde des ajouts / suppressions</text>')
+    rows.append(f'<text x="28" y="{loc_y - 28}" class="label">{escape(text["lines"])}</text>')
     rows.append(f'<text x="28" y="{loc_y}" class="value">{loc}</text>')
     rows.append(f'<text x="{width - 28}" y="{loc_y}" text-anchor="end" class="label">{delta}</text>')
     for i, row in enumerate(lang_rows):
@@ -255,9 +272,9 @@ def render(s, mobile=False):
     login = escape(s["login"])
     description = escape(f"{summary}. " + "; ".join(
         f"{label} : {num(s[key])}" for label, key in metrics
-    ) + f". Lignes : {loc}, {delta}. Langages : {langs}.")
-    return f'''<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img" aria-labelledby="title desc">
-  <title id="title">Activité GitHub · {login}</title>
+    ) + f". {text['lines_desc']} : {loc}, {delta}. {text['languages']} : {langs}.")
+    return f'''<svg xmlns="http://www.w3.org/2000/svg" xml:lang="{language}" viewBox="0 0 {width} {height}" width="{width}" height="{height}" role="img" aria-labelledby="title desc">
+  <title id="title">{text['activity']} · {login}</title>
   <desc id="desc">{description}</desc>
   <style>
     {faces}
@@ -275,7 +292,7 @@ def render(s, mobile=False):
     }}
   </style>
   <rect width="{width}" height="{height}" rx="16" class="page" />
-  <text x="28" y="40" class="heading">Activité GitHub · {login}</text>
+  <text x="28" y="40" class="heading">{text['activity']} · {login}</text>
   <text x="28" y="68" class="label">{escape(summary)}</text>
   {"".join(rows)}
 </svg>
@@ -302,13 +319,14 @@ def main():
         if bool(os.environ.get("GH_TOKEN"))
         else "public activity summary"
     )
-    svg = render(data)
-    os.makedirs(os.path.dirname(args.out) or ".", exist_ok=True)
-    with open(args.out, "w", encoding="utf-8") as f:
-        f.write(svg)
-    mobile_out = Path(args.out).with_stem(Path(args.out).stem + "-mobile")
-    mobile_out.write_text(render(data, mobile=True), encoding="utf-8")
-    print(f"wrote {args.out} + {mobile_out} (commits={data['commits']} stars={data['stars']} langs={data['langs']})")
+    output = Path(args.out)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    for language in TEXT:
+        localized = output.with_stem(output.stem + ("" if language == "fr" else f"-{language}"))
+        for mobile in (False, True):
+            target = localized.with_stem(localized.stem + ("-mobile" if mobile else ""))
+            target.write_text(render(data, mobile=mobile, language=language), encoding="utf-8")
+            print(f"wrote {target}")
 
 
 if __name__ == "__main__":
